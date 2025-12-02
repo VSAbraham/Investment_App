@@ -20,4 +20,9 @@ public class UserCollectionImplementation implements UserCollection{
     public void addUser(User user){
         allUsers.add(user);
     }
+
+    @Override
+    public Book searchUserById(Integer Id){
+        return allUsers.get(Id).getBook();
+    }
 }
