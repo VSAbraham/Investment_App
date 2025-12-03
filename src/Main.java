@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -6,7 +8,8 @@ public class Main {
     public static void main(String[] args) {
         UserCollection userCollection = new UserCollectionImplementation();
         while(true){
-            System.out.println("Options:\n\n1. Display All Users\n2. Add a New User\n3. Search User Transaction details\n\nEnter 0 to exit");
+            System.out.print("Options:\n\n1. Display All Users\n2. Add a New User\n3. Search User Transaction details\n\nEnter 0 to exit\n");
+            System.out.print("Enter Option: ");
             Scanner sc = new Scanner(System.in);
 
             int ch = sc.nextInt();
@@ -15,26 +18,43 @@ public class Main {
                 userCollection.displayUsers();
 
             else if (ch == 2) {
-                System.out.println("Enter Name: ");
-                String name = sc.next();
-                System.out.println("Enter Phone No. : ");
-                Integer ph = sc.nextInt();
+                System.out.print("Enter Name: ");
+                sc.nextLine();
+                String name = sc.nextLine().trim();
+                System.out.print("Enter Phone No. : ");
+                long ph = sc.nextLong();
                 //to validate phone number
                 if(String.valueOf(ph).length() != 10) {
                     System.out.println("Invalid Phone Number...");
                     continue;
                 }
-                System.out.println("Enter Address details: ");
-                String address = sc.next();
+                System.out.print("Enter Address details: ");
+                sc.nextLine();
+                String address = sc.nextLine().trim();
+
+                System.out.print("Enter Amount to deposit: ");
+                long depositAmount = sc.nextLong();
 
                 User user = userCollection.createUser(name, ph, address);
                 userCollection.addUser(user);
+                LocalDate date = LocalDate.now();
+                //Adding initial deposit amount from User...
+                user.getBook().addTransaction(new Transaction(user.getId(), depositAmount, date));
+                System.out.println("\nUser Added successfully!!!\n\n");
             }
 
             else if (ch == 3) {
-                System.out.println("Enter ID: ");
+                System.out.print("Enter ID: ");
                 Integer id = sc.nextInt();
-                userCollection.searchUserById(id).displayTransactions();
+                try {
+                    userCollection.searchUserById(id).displayTransactions();
+                }
+                catch (NullPointerException e){
+                    System.out.println("\n\nNo transactions found for the given ID. Please check the ID and try again.\n\n");
+
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("\n\nNo Users Found, Kindly add a user, using option 2\n\n");
+                }
             }
 
             else if (ch == 0) {

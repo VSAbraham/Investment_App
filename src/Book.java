@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Book {
     private Integer id;
-    private String name;
-    private List<Transaction> transactions = new ArrayList<>();
+    private final String name;
+    private final List<Transaction> transactions = new ArrayList<>();
 
     public Book(Integer id, String name) {
         this.id = id;
@@ -20,10 +20,14 @@ public class Book {
     }
 
     public void displayTransactions() {
-        System.out.println("Transaction Book: " + name);
-        System.out.println("ID\tType\tAmount\tDate");
-        for (Transaction t : transactions) {
-            System.out.println(t);
+        if(transactions.isEmpty())
+            System.out.println("No Transactions available!!!");
+        else {
+            System.out.println("Transaction Book: " + name);
+            System.out.println("ID\tAmount\tDate");
+            for (Transaction t : transactions) {
+                System.out.println(t);
+            }
         }
     }
 }

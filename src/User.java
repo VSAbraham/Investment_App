@@ -1,11 +1,11 @@
 public class User {
     private Integer id;
     private String name;
-    private Integer contact;
+    private long contact;
     private String address;
     private Book book;
 
-    public User(Integer id, String name, Integer contact, String address) {
+    public User(Integer id, String name, long contact, String address) {
         this.id = id;
         this.name = name;
         this.contact = contact;
@@ -20,11 +20,11 @@ public class User {
         this.name = name;
     }
 
-    public Integer getContact() {
+    public long getContact() {
         return contact;
     }
 
-    public void setContact(Integer contact) {
+    public void setContact(long contact) {
         this.contact = contact;
     }
 
