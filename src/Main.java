@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         UserCollection userCollection = new UserCollectionImplementation();
         while(true){
-            System.out.println("Options:\n1. Display All Users\n2. Add a New User\n3. Search User Transaction details\n\nEnter 0 to exit");
+            System.out.println("Options:\n\n1. Display All Users\n2. Add a New User\n3. Search User Transaction details\n\nEnter 0 to exit");
             Scanner sc = new Scanner(System.in);
 
             int ch = sc.nextInt();

@@ -4,6 +4,8 @@ public class UserCollectionImplementation implements UserCollection{
     private List<User> allUsers;
     @Override
     public void displayUsers(){
+        if(allUsers.size() == 0)
+            System.out.println("No users available!!!");
         for(User user : allUsers) {
             System.out.println();
             System.out.println("ID\t\tName\t\tContact\t\tAddress");
