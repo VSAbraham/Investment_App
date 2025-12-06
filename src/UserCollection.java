@@ -5,5 +5,5 @@ public interface UserCollection {
     void addUser(User user);
     User createUser(String name, long contact, String address);
     Book searchUserById(Integer id);
-    void UpdateUserDetails(long contact, Scanner sc);
+    void UpdateUserDetails(long contact,String name,String address,long ph_no);
 }

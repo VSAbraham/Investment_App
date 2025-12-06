@@ -108,27 +108,12 @@ public class UserCollectionImplementation implements UserCollection{
         return user;
     }
     @Override
-    public void UpdateUserDetails(long contact, Scanner sc){
+    public void UpdateUserDetails(long contact,String name,String address,long ph_no){
         boolean isContactAvailable = false;
         for (User user : allUsers.values()) {
             if(user.getContact()==contact){
                 isContactAvailable = true;
-                System.out.println("Please enter the details:\n If the detail need not be changed please press enter");
-                String name;
-                String address;
-                long ph_no;
-                try {
-                    System.out.println("Enter the Name: ");
-                    sc.nextLine();
-                    name = sc.nextLine();
-                    System.out.println("Enter the Address: ");
-                    address = sc.nextLine();
-                    System.out.println("Enter the Phone Number: ");
-                    String ph = sc.nextLine();
-                    ph_no = (ph.isEmpty())?0:Long.parseLong(ph);
-                } catch (RuntimeException e) {
-                    throw new RuntimeException(e);
-                }
+               
                 if(!name.isEmpty()){
                     user.setName(name);
                 }

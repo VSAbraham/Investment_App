@@ -53,7 +53,24 @@ public class Main {
                     case 4 ->{
                         System.out.println("Enter your Phone Number:");
                         long contact = sc.nextLong();
-                        userCollection.UpdateUserDetails(contact, sc);
+                         System.out.println("Please enter the details:\n If the detail need not be changed please press enter");
+                String name;
+                String address;
+                long ph_no;
+                try {
+                    System.out.println("Enter the Name: ");
+                    sc.nextLine();
+                    name = sc.nextLine();
+                    System.out.println("Enter the Address: ");
+                    address = sc.nextLine();
+                    System.out.println("Enter the Phone Number: ");
+                    String ph = sc.nextLine();
+                    ph_no = (ph.isEmpty())?0:Long.parseLong(ph);
+                     userCollection.UpdateUserDetails(contact, name,address,ph_no);
+                } catch (RuntimeException e) {
+                    throw new RuntimeException(e);
+                }
+                       
                     }
                     case 0 -> {
                         flag = true;
