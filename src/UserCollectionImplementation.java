@@ -6,7 +6,7 @@ public class UserCollectionImplementation implements UserCollection{
     @Override
     public void displayUsers() {
         if (allUsers.isEmpty()) {
-            System.out.println("No users available!!!");
+            System.out.println("\nNo users available!!!\n");
             return;
         }
 
@@ -107,7 +107,34 @@ public class UserCollectionImplementation implements UserCollection{
         id++;
         return user;
     }
-
+    @Override
+    public void updateUserDetails(long contact,String name,String address,long ph_no){
+        boolean isContactAvailable = false;
+        for (User user : allUsers.values()) {
+            if(user.getContact()==contact){
+                isContactAvailable = true;
+               
+                if(!name.isEmpty()){
+                    user.setName(name);
+                }
+                if(!address.isEmpty()){
+                    user.setAddress(address);
+                }
+                if(ph_no!=0){
+                    user.setContact(ph_no);
+                }
+                break;
+            }
+        }
+        if(isContactAvailable)
+        {
+            System.out.println("Updated Successfully");
+        }
+        else
+        {
+             System.out.println("Please Provide a valid Number");
+        }
+    }
     @Override
     public void addUser(User user){
         allUsers.put(user.getId(),user);
@@ -120,18 +147,11 @@ public class UserCollectionImplementation implements UserCollection{
     }
 
     @Override
-    public boolean existById(Integer id){
-        if(allUsers.containsKey(id))
-            return true;
-        else
-            return false;
-    }
-
-    @Override
     public void deleteUser(Integer id){
         if (allUsers.containsKey(id)) {
             allUsers.remove(id);
             System.out.println("User with ID " + id + " has been deleted successfully!!!");
+            return;
         }
         System.out.println("User with ID " + id + " is not present.");
     }
