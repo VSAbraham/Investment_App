@@ -7,16 +7,16 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         UserCollection userCollection = new UserCollectionImplementation();
+        Scanner sc = new Scanner(System.in);
         while(true){
-            System.out.print("Options:\n\n1. Display All Users\n2. Add a New User\n3. Search User Transaction details\n\nEnter 0 to exit\n");
+            System.out.print("Options:\n\n1. Display All Users\n2. Add a New User\n3. Search User Transaction details\n4. Update User\n5. Delete User\n\nEnter 0 to exit\n");
             System.out.print("Enter Option: ");
-            Scanner sc = new Scanner(System.in);
-
+            //Choice
             int ch = sc.nextInt();
-
+            //Display all the list of Users
             if(ch == 1)
                 userCollection.displayUsers();
-
+            //Create a new User
             else if (ch == 2) {
                 System.out.print("Enter Name: ");
                 sc.nextLine();
@@ -42,7 +42,7 @@ public class Main {
                 user.getBook().addTransaction(new Transaction(user.getId(), depositAmount, date));
                 System.out.println("\nUser Added successfully!!!\n\n");
             }
-
+            //Display Transactions of a particular User
             else if (ch == 3) {
                 System.out.print("Enter ID: ");
                 Integer id = sc.nextInt();
@@ -56,13 +56,23 @@ public class Main {
                     System.out.println("\n\nNo Users Found, Kindly add a user, using option 2\n\n");
                 }
             }
-
-            else if (ch == 0) {
+            //Update User based on ID
+            else if (ch == 4){
+                System.out.print("Enter ID: ");
+                Integer id = sc.nextInt();
+            }
+            //Delete User based on ID
+            else if (ch == 5) {
+                System.out.print("Enter ID: ");
+                Integer id = sc.nextInt();
+                userCollection.deleteUser(id);
+            } else if (ch == 0) {
                 break;
             }else
-                System.out.println("Invalid Option!!!\nAvailable options are 1,2,3 & 0");
+                System.out.println("Invalid Option!!!\nAvailable options are 1,2,3,4,5 & 0");
 
         }
+        sc.close();
 
     }
 }

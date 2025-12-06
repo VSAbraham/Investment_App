@@ -119,6 +119,23 @@ public class UserCollectionImplementation implements UserCollection{
         return (u == null) ? null : u.getBook();
     }
 
+    @Override
+    public boolean existById(Integer id){
+        if(allUsers.containsKey(id))
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public void deleteUser(Integer id){
+        if (allUsers.containsKey(id)) {
+            allUsers.remove(id);
+            System.out.println("User with ID " + id + " has been deleted successfully!!!");
+        }
+        System.out.println("User with ID " + id + " is not present.");
+    }
+
     // ---------- Helper methods ----------
     private static String repeat(String s, int times) {
         StringBuilder sb = new StringBuilder(Math.max(0, times));

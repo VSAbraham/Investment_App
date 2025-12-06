@@ -5,4 +5,7 @@ public interface UserCollection {
     void addUser(User user);
     User createUser(String name, long contact, String address);
     Book searchUserById(Integer id);
+//    void updateUser(Integer id);
+    void deleteUser(Integer id);
+    boolean existById(Integer id);
 }
