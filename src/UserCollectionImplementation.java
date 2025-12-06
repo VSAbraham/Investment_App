@@ -108,7 +108,7 @@ public class UserCollectionImplementation implements UserCollection{
         return user;
     }
     @Override
-    public void UpdateUserDetails(long contact,String name,String address,long ph_no){
+    public void updateUserDetails(long contact,String name,String address,long ph_no){
         boolean isContactAvailable = false;
         for (User user : allUsers.values()) {
             if(user.getContact()==contact){
