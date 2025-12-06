@@ -79,6 +79,12 @@ public class Main {
                     }
 
                 }
+                //Delete User
+                case 5 -> {
+                    System.out.print("Enter ID: ");
+                    Integer id = sc.nextInt();
+                    userCollection.deleteUser(id);
+                }
                 //Exit
                 case 0 -> {
                     flag = true;
