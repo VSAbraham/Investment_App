@@ -12,7 +12,7 @@ public class Main {
                     "\n2. Add a New User" +
                     "\n3. Search User Transaction details" +
                     "\n4. Update the User Details" +
-                    "\n5. Delete User"
+                    "\n5. Delete User"+
                     "\n\nEnter 0 to exit\n");
             System.out.print("Enter Option: ");
            
