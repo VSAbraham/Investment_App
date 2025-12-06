@@ -107,7 +107,46 @@ public class UserCollectionImplementation implements UserCollection{
         id++;
         return user;
     }
-
+    @Override
+    public void UpdateUserDetails(long contact){
+        boolean isContactAvailable = false;
+        for (User user : allUsers.values()) {
+            if(user.getContact()==contact){
+                isContactAvailable = true;
+                System.out.println("Please enter the details:\n If the detail need not be changed please press enter");
+                String name;
+                String address;
+                long ph_no;
+                try (Scanner sc = new Scanner(System.in)) {
+                    System.out.println("Enter the Name: ");
+                    name = sc.nextLine();
+                    System.out.println("Enter the Address: ");
+                    address = sc.nextLine();
+                    System.out.println("Enter the Phone Number: ");
+                    String ph = sc.nextLine();
+                    ph_no = (ph.isEmpty())?0:Long.parseLong(ph);
+                }
+                if(!name.isEmpty()){
+                    user.setName(name);
+                }
+                if(!address.isEmpty()){
+                    user.setAddress(address);
+                }
+                if(ph_no!=0){
+                    user.setContact(ph_no);
+                }
+                break;
+            }
+        }
+        if(isContactAvailable)
+        {
+            System.out.println("Updated Successfully");
+        }
+        else
+        {
+             System.out.println("Please Provide a valid Number");
+        }
+    }
     @Override
     public void addUser(User user){
         allUsers.put(user.getId(),user);
