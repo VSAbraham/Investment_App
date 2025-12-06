@@ -6,7 +6,7 @@ public class UserCollectionImplementation implements UserCollection{
     @Override
     public void displayUsers() {
         if (allUsers.isEmpty()) {
-            System.out.println("No users available!!!");
+            System.out.println("\nNo users available!!!\n");
             return;
         }
 
@@ -151,6 +151,7 @@ public class UserCollectionImplementation implements UserCollection{
         if (allUsers.containsKey(id)) {
             allUsers.remove(id);
             System.out.println("User with ID " + id + " has been deleted successfully!!!");
+            return;
         }
         System.out.println("User with ID " + id + " is not present.");
     }
