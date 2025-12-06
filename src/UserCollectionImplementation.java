@@ -108,7 +108,7 @@ public class UserCollectionImplementation implements UserCollection{
         return user;
     }
     @Override
-    public void UpdateUserDetails(long contact){
+    public void UpdateUserDetails(long contact, Scanner sc){
         boolean isContactAvailable = false;
         for (User user : allUsers.values()) {
             if(user.getContact()==contact){
@@ -117,14 +117,17 @@ public class UserCollectionImplementation implements UserCollection{
                 String name;
                 String address;
                 long ph_no;
-                try (Scanner sc = new Scanner(System.in)) {
+                try {
                     System.out.println("Enter the Name: ");
+                    sc.nextLine();
                     name = sc.nextLine();
                     System.out.println("Enter the Address: ");
                     address = sc.nextLine();
                     System.out.println("Enter the Phone Number: ");
                     String ph = sc.nextLine();
                     ph_no = (ph.isEmpty())?0:Long.parseLong(ph);
+                } catch (RuntimeException e) {
+                    throw new RuntimeException(e);
                 }
                 if(!name.isEmpty()){
                     user.setName(name);

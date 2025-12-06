@@ -51,10 +51,9 @@ public class Main {
                         }
                     }
                     case 4 ->{
-
                         System.out.println("Enter your Phone Number:");
                         long contact = sc.nextLong();
-                        userCollection.UpdateUserDetails(contact);
+                        userCollection.UpdateUserDetails(contact, sc);
                     }
                     case 0 -> {
                         flag = true;
