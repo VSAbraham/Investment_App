@@ -1,0 +1,16 @@
+
+# Use an official JDK image
+FROM openjdk:17
+
+# Set working directory
+WORKDIR /app
+
+# Clone your GitHub repo
+RUN apt-get update && apt-get install -y git
+RUN git clone https://github.com/VSAbraham/Investment_App.git .
+
+# Compile the app (adjust based on your build system)
+RUN javac Main.java
+
+# Run the app
+CMD ["java", "Main"]
